@@ -1,0 +1,29 @@
+name: SovietRxiv game-paper export
+
+on:
+  push:
+    branches:
+      - petrosyan-lag-game
+    paths:
+      - '.github/workflows/sovietrxiv-game-export.yml'
+      - 'tools/fetch_sovietrxiv_games.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch search result and translated full texts
+        run: python3 tools/fetch_sovietrxiv_games.py
+      - name: Upload export
+        uses: actions/upload-artifact@v4
+        with:
+          name: sovietrxiv-game-export
+          path: sovietrxiv_game_export
+          if-no-files-found: error
+          retention-days: 1
