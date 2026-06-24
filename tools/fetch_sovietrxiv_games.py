@@ -48,6 +48,7 @@ def get_json(url: str, attempts: int = 8):
     raise RuntimeError(f"Could not fetch {url}")
 
 
+# Match the all-fields web search requested by the user.
 query = urllib.parse.urlencode(
     {"q": "Game", "source": "russiarxiv", "limit": 100}
 )
