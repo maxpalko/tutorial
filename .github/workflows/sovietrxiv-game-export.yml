@@ -1,12 +1,9 @@
 name: SovietRxiv game-paper export
 
 on:
-  push:
+  pull_request:
     branches:
-      - petrosyan-lag-game
-    paths:
-      - '.github/workflows/sovietrxiv-game-export.yml'
-      - 'tools/fetch_sovietrxiv_games.py'
+      - tutorial_max_palko
   workflow_dispatch:
 
 permissions:
